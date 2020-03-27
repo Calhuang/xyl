@@ -1,0 +1,21 @@
+@import '~styles/base.scss';
+
+.card-box {
+  border: 1px solid $pallete-1;
+  color: $text-1;
+  background-color: $bg-color-t;
+
+  .card-header {
+    border-bottom: 1px solid $pallete-1;
+    height: 20px;
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    justify-content: space-between;
+  }
+
+  .card-content {
+    padding: 10px 5px;
+  }
+}

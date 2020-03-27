@@ -1,0 +1,27 @@
+@import '~styles/base.scss';
+
+.message {
+  display: flex;
+  justify-content: center;
+
+  .message-box {
+    background-color: $bg-color;
+    border-radius: 4px;
+    width: 50vw;
+    padding: 40px;
+    position: relative;
+
+    .title-banner {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      background-color: $pallete-1;
+      color: white;
+      padding: 0 4px;
+      border-radius: 0 0 4px 4px;
+      border-bottom: 2px solid #d6e6f2;
+      border-left: 2px solid #d6e6f2;
+      border-right: 2px solid #d6e6f2;
+    }
+  }  
+}

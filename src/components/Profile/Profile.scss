@@ -1,0 +1,16 @@
+@import '~styles/base.scss';
+
+.profile {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  color: $text-1;
+
+  .userInfo {
+    margin-bottom: 20px;
+    
+    .name {
+      font-weight: bold;
+    }
+  }
+}
