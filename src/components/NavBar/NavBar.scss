@@ -1,0 +1,43 @@
+@import '~styles/base.scss';
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-container {
+  padding: 10px;
+  display: flex;
+
+  .menu-buttons {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 20px;
+    font-size: 1.0rem;
+    transition: all ease-in-out 0.4s;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid $pallete-1;
+
+    &.selected {
+      font-size: 1.3rem;
+      border-bottom: none;
+    }
+
+    .jp-text {
+      color: $pallete-2;
+    }
+  }
+
+  .menu-buttons:hover {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 20px;
+    font-size: 1.2rem;
+    background-color: $pallete-1-t;
+    border-radius: 2px;
+    border-bottom: none;
+  }
+}
