@@ -3,6 +3,7 @@ import './NavBar.scss';
 import {
   BrowserRouter as Router,
   Link,
+  withRouter,
 } from "react-router-dom";
 
 class NavBar extends React.Component {
@@ -45,6 +46,15 @@ class NavBar extends React.Component {
     };
   }
 
+  componentDidMount() {
+    // set current nav page
+    this.state.buttonList.forEach((nav, index) => {
+      if (this.props.location.pathname === nav.link) {
+        this.setState({ selectedButton: index })
+      }
+    })
+  }
+
   select = (index) => {
     this.setState(state => ({
       selectedButton: index,
@@ -56,7 +66,7 @@ class NavBar extends React.Component {
       <div className="menu">
         <div className="menu-container">
           {this.state.buttonList.map((item, index) => 
-            <Link to={item.link} style={{ textDecoration: 'none' }}>
+            <Link to={item.link} style={{ textDecoration: 'none' }} key={item.link}>
               <div className={index === this.state.selectedButton ? "menu-buttons selected" : "menu-buttons"} onClick={() => this.select(index)}>
                 <div className="jp-font jp-text">{item.char}</div>
                 <div className="eng-font">{item.name}</div>
@@ -69,4 +79,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
