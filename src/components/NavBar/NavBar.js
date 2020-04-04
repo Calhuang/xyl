@@ -54,18 +54,16 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="menu">
-        <Router>
-          <div className="menu-container">
-            {this.state.buttonList.map((item, index) => 
-              <Link to={item.link} style={{ textDecoration: 'none' }}>
-                <div className={index === this.state.selectedButton ? "menu-buttons selected" : "menu-buttons"} onClick={() => this.select(index)}>
-                  <div className="jp-font jp-text">{item.char}</div>
-                  <div className="eng-font">{item.name}</div>
-                </div>
-              </Link>
-            )}
-          </div>
-        </Router>
+        <div className="menu-container">
+          {this.state.buttonList.map((item, index) => 
+            <Link to={item.link} style={{ textDecoration: 'none' }}>
+              <div className={index === this.state.selectedButton ? "menu-buttons selected" : "menu-buttons"} onClick={() => this.select(index)}>
+                <div className="jp-font jp-text">{item.char}</div>
+                <div className="eng-font">{item.name}</div>
+              </div>
+            </Link>
+          )}
+        </div>
       </div>
     );
   }
