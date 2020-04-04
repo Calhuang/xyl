@@ -13,7 +13,7 @@ function ExperienceCard({ companyInfo }) {
       <div className={cardHover ? "exp-card-header hover" : "exp-card-header"}>
         <div>{companyInfo.companyName}</div>
         <div>
-          <img width="50" src={prof} alt="company image"/>
+          <img width="50" src={companyInfo.img} alt="company image"/>
         </div>
       </div>
       <div className="exp-card-inner">
@@ -21,6 +21,7 @@ function ExperienceCard({ companyInfo }) {
         <div>Location: Los Angeles</div>
         <br/>
         <div>Description: A real-estate platform for connecting professionals and home-buyers</div>
+        <br/>
         <div>Duration Worked: 1.5 years</div>
         <br/>
         <div className="exp-status-container">
@@ -29,7 +30,7 @@ function ExperienceCard({ companyInfo }) {
         </div>
       </div>
       <br/>
-      <div className="exp-card-bottom">
+      <div className="exp-card-bottom" onClick={() => window.open(companyInfo.link, '_blank')}>
         Visit ->
       </div>
     </div>
