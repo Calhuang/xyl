@@ -44,7 +44,7 @@ class Profile extends React.Component {
         <br/>
         <div>
           {this.state.logs.slice(0).reverse().map((post) => 
-            <Post header={post.date} icon="message" content={post.text}/> 
+            <Post header={post.date} icon="message" content={post.text} key={post.date}/> 
           )}
         </div>
       </div>
