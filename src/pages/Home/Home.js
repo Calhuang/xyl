@@ -6,6 +6,7 @@ import NavBar from 'components/NavBar/NavBar'
 import Profile from 'components/Profile/Profile'
 import Experience from 'components/Experience/Experience'
 import FAB from 'components/FAB/FAB'
+import Skills from 'components/Skills/Skills'
 import {
   BrowserRouter as Router,
   Switch,
@@ -55,6 +56,9 @@ function App() {
           {isMobile ? <FAB buttonList={buttonList}/> : <NavBar buttonList={buttonList}/>}
           <br/>
           <Switch>
+            <Route path="/skills">
+              <Skills/>
+            </Route>
             <Route path="/exp">
               <Experience/>
             </Route>
