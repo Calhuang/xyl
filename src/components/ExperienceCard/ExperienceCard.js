@@ -24,10 +24,10 @@ function ExperienceCard({ companyInfo }) {
         <br/>
         <div>Duration Worked: 1.5 years</div>
         <br/>
-        <div className="exp-status-container">
+        {/* <div className="exp-status-container">
           <div>{`Status: `}</div>
           <div className="exp-status-box">ONBOARD</div>
-        </div>
+        </div> */}
       </div>
       <br/>
       <div className="exp-card-bottom" onClick={() => window.open(companyInfo.link, '_blank')}>
