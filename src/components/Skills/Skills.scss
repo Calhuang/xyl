@@ -1,0 +1,19 @@
+@import '~styles/base.scss';
+
+.skills-container {
+  color: $text-1;
+}
+
+.skill-title {
+  border-left: 2px solid $pallete-1;
+  padding-left: 10px;
+  font-size: larger;
+  margin-bottom: 25px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(150px, 1fr) );
+  grid-gap: 20px;
+  margin-bottom: 25px;
+}
