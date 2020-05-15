@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './ExperienceCard.scss';
-import prof from 'images/profile.svg'
 
 function ExperienceCard({ companyInfo }) {
   const [cardHover, setCardHover] = useState(false);
@@ -13,7 +12,7 @@ function ExperienceCard({ companyInfo }) {
       <div className={cardHover ? "exp-card-header hover" : "exp-card-header"}>
         <div>{companyInfo.companyName}</div>
         <div>
-          <img width="50" src={companyInfo.img} alt="company image"/>
+          <img width="50" src={companyInfo.img} alt="company"/>
         </div>
       </div>
       <div className="exp-card-inner">
@@ -22,7 +21,7 @@ function ExperienceCard({ companyInfo }) {
         <br/>
         <div>Description: A real-estate platform for connecting professionals and home-buyers</div>
         <br/>
-        <div>Duration Worked: 1.5 years</div>
+        <div>Duration Worked: {companyInfo.timeWorked}</div>
         <br/>
         {/* <div className="exp-status-container">
           <div>{`Status: `}</div>

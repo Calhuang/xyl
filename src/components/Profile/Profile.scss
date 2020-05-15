@@ -8,6 +8,12 @@
 
   .userInfo {
     margin-bottom: 20px;
+
+    .profile-pic {
+      border-radius: 50%;
+      border: 2px solid $pallete-2;
+      width: 128px;
+    }
     
     .name {
       font-weight: bold;

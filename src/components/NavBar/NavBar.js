@@ -1,7 +1,6 @@
 import React from 'react';
 import './NavBar.scss';
 import {
-  BrowserRouter as Router,
   Link,
   withRouter,
 } from "react-router-dom";

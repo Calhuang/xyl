@@ -1,6 +1,6 @@
 import React from 'react';
 import './Profile.scss';
-import prof from 'images/profile.svg'
+import prof from 'images/propic.png'
 import Card from 'components/CardBox/Card'
 import Post from 'components/BlogPost/Post'
 
@@ -29,7 +29,7 @@ class Profile extends React.Component {
     return (
       <div className="profile">
         <div className="userInfo eng-font">
-          <img src={prof} alt="profile"/>
+          <img className="profile-pic" src={prof} alt="profile"/>
           <div className="name">{this.state.userInfo.name}</div>
           <div className="role">{this.state.userInfo.role}</div>
         </div>

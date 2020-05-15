@@ -6,7 +6,9 @@ import NavBar from 'components/NavBar/NavBar'
 import Profile from 'components/Profile/Profile'
 import Experience from 'components/Experience/Experience'
 import FAB from 'components/FAB/FAB'
-import Skills from 'components/Skills/Skills'
+// import Skills from 'components/Skills/Skills'
+import Contact from 'components/Contact/Contact'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,12 +31,12 @@ function App() {
       img: null,
       link: '/exp',
     },
-    {
-      name: 'Skills',
-      char: 'スキル',
-      img: null,
-      link: '/skills',
-    },
+    // {
+    //   name: 'Skills',
+    //   char: 'スキル',
+    //   img: null,
+    //   link: '/skills',
+    // },
     {
       name: 'Resume',
       char: '履歴書',
@@ -55,17 +57,22 @@ function App() {
         <Router>
           {isMobile ? <FAB buttonList={buttonList}/> : <NavBar buttonList={buttonList}/>}
           <br/>
-          <Switch>
-            <Route path="/skills">
-              <Skills/>
-            </Route>
-            <Route path="/exp">
-              <Experience/>
-            </Route>
-            <Route path="/">
-              <Profile/>
-            </Route>
-          </Switch>
+          <div className="main-content">
+            <Switch>
+              {/* <Route path="/skills">
+                <Skills/>
+              </Route> */}
+              <Route path="/exp">
+                <Experience/>
+              </Route>
+              <Route path="/contact">
+                <Contact/>
+              </Route>
+              <Route path="/">
+                <Profile/>
+              </Route>
+            </Switch>
+          </div>
         </Router>
       </div>
     </div>
