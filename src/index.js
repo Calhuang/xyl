@@ -12,7 +12,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 // -- graphql init
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/graphql'
+  uri: process.env.NODE_ENV === 'production' ? 'https://xyl-backend.herokuapp.com/graphql' : 'http://localhost:4000/graphql'
 })
 
 const cache = new InMemoryCache();
