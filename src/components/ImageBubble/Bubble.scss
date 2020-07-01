@@ -1,0 +1,128 @@
+@import '~styles/base.scss';
+
+.bubble-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.chip-feat {
+  $chip-height: 25px;
+
+  position: absolute;
+  left: 20px;
+  top: -10px;
+  height: $chip-height;
+  background: $pallete-2;
+  border-radius: 50px;
+  color: $white;
+  line-height: $chip-height;
+  font-size: 14px;
+  padding: 0 10px;
+  font-weight: 500;
+  z-index: 3;
+}
+
+.chip-new {
+  $chip-height: 25px;
+
+  position: absolute;
+  left: 20px;
+  top: -10px;
+  height: $chip-height;
+  background: $pallete-1;
+  border-radius: 50px;
+  color: $white;
+  line-height: $chip-height;
+  font-size: 14px;
+  padding: 0 10px;
+  font-weight: 500;
+  z-index: 3;
+}
+
+.bubble {
+  width: 250px;
+  height: 250px;
+  border: 6px solid $light-grey;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: border 0.2s ease-in;
+
+  &:hover {
+    border: 6px solid $pallete-1-t;
+  }
+  
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  &.featured {
+    border: 6px solid $pallete-2-t;
+  }
+}
+
+.portrait-bubble {
+  width: 250px;
+  height: 250px;
+  border: 6px solid $light-grey;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  transition: border 0.2s ease-in;
+
+  &:hover {
+    border: 6px solid $pallete-1-t;
+  }
+  
+  img {
+    width: 250px;
+    object-fit: cover;
+  }
+
+  &.featured {
+    border: 6px solid $pallete-2-t;
+  }
+}
+
+.overlay {
+  $icon-size: 24px;
+
+  position: absolute;
+  background-color: $pallete-1-20t;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  color: $white;
+
+  .camera-container {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+
+    .camera-info {
+      display: flex;
+  
+      img {
+        width: $icon-size;
+        height: $icon-size;
+        margin-right: 5px;
+      }
+      
+      .info-text {
+        line-height: $icon-size;
+      }
+    }
+  }
+}
+
+// animations
+
+.animate__animated.animate__pulse {
+  --animate-duration: 2s;
+}

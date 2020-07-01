@@ -1,19 +1,48 @@
 require('module-alias/register');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require('dotenv').config()
 
-var apiRouter = require('./routes/api');
+const express = require('express');
+// const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const expressGraphQL = require('express-graphql');
+const schema = require('./graphql/schema/schema');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./graphql/schema/schema')
+const resolvers = require('./graphql/resolvers/resolvers')
+const models = require('./models')
+const cors = require('cors')
 
-var app = express();
+models.Post.sync()
+
+// routing
+const server = new ApolloServer({ typeDefs, resolvers, context: { models } });
+const app = express();
+server.applyMiddleware({ app });
+
+// CORS
+const whitelist = ['http://localhost:3000']
+
+const corsOptions = function(origin, callback) {
+  // allow requests with no origin 
+  // (like mobile apps or curl requests)
+  if(!origin) return callback(null, true);
+  if(whitelist.indexOf(origin) === -1){
+    var msg = 'The CORS policy for this site does not ' +
+              'allow access from the specified Origin.';
+    return callback(new Error(msg), false);
+  }
+  return callback(null, true);
+}
+
+app.use(cors({
+  origin: corsOptions,
+}))
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/api', apiRouter);
 
 module.exports = app;

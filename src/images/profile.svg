@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="128" width="128">
-  <rect width="128" height="128" style="fill:none;stroke-width:2;stroke:#000D80" />
-  <line x1="0" y1="0" x2="128" y2="128" style="stroke:#000D80;stroke-width:1" />
-  <line x1="0" y1="128" x2="128" y2="0" style="stroke:#000D80;stroke-width:1" />
-  Sorry, your browser does not support inline SVG.
-</svg>

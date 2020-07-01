@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Home.scss';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import NavBar from 'components/NavBar/NavBar'
-import Profile from 'components/Profile/Profile'
-import Experience from 'components/Experience/Experience'
-import FAB from 'components/FAB/FAB'
-// import Skills from 'components/Skills/Skills'
-import Contact from 'components/Contact/Contact'
+import Plog from 'components/Plog/Plog'
+import CameraWhite from 'images/camera_w.svg'
+import PortfolioWhite from 'images/portfolio_w.svg'
+import AboutWhite from 'images/about_w.svg'
+import CameraBlack from 'images/camera_b.svg'
+import PortfolioBlack from 'images/portfolio_b.svg'
+import AboutBlack from 'images/about_b.svg'
+import Editor from 'pages/Editor/Editor'
+import { GET_BODY_LOADING } from 'gql/local/global'
+import { withApollo } from 'react-apollo';
 
 import {
   BrowserRouter as Router,
@@ -15,68 +20,69 @@ import {
   Route,
 } from "react-router-dom";
 
-function App() {
+function App({ client }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  // const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const buttonList = [
     {
-      name: 'Home',
-      char: 'ホーム',
-      img: null,
+      name: 'Plog',
+      img_w: CameraWhite,
+      img_b: CameraBlack,
       link: '/',
     },
     {
-      name: 'Experience',
-      char: '仕事の経験',
-      img: null,
-      link: '/exp',
-    },
-    // {
-    //   name: 'Skills',
-    //   char: 'スキル',
-    //   img: null,
-    //   link: '/skills',
-    // },
-    {
-      name: 'Resume',
-      char: '履歴書',
-      img: null,
-      link: '/resume',
+      name: 'Portfolio',
+      img_w: PortfolioWhite,
+      img_b: PortfolioBlack,
+      link: '/portfolio',
     },
     {
-      name: 'Contact',
-      char: '個人情報',
-      img: null,
-      link: '/contact',
+      name: 'About Me',
+      img_w: AboutWhite,
+      img_b: AboutBlack,
+      link: '/about',
     },
   ]
+
+  useEffect(() => {
+    const { loadState } = client.readQuery({ query: GET_BODY_LOADING })
+    const hide = eval(loadState.hideLoading)
+    const loader = document.querySelector('.loader')
+    hide(loader)
+  })
+
+  const generateParticleBg = () => {
+    const boxes = Array(15).fill('')
+    const sprites = boxes.map((item, index) => <div className="particle" key={'sprite-' + index}></div>)
+    return <div className="particle-container">{sprites}</div>
+  }
 
   return (
     <div className="App">
       <div className="layout">
         <Router>
-          {isMobile ? <FAB buttonList={buttonList}/> : <NavBar buttonList={buttonList}/>}
+          <NavBar buttonList={buttonList}/>
+          <br/>
           <br/>
           <div className="main-content">
             <Switch>
-              {/* <Route path="/skills">
-                <Skills/>
-              </Route> */}
-              <Route path="/exp">
-                <Experience/>
+              <Route path="/portfolio">
               </Route>
-              <Route path="/contact">
-                <Contact/>
+              <Route path="/about">
+              </Route>
+              <Route path="/edit">
+                <Editor/>
               </Route>
               <Route path="/">
-                <Profile/>
+                <Plog/>
               </Route>
             </Switch>
           </div>
         </Router>
       </div>
+      <div>{generateParticleBg()}</div>
     </div>
   );
 }
 
-export default App;
+export default withApollo(App);
