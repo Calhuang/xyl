@@ -15,7 +15,7 @@ module.exports = {
     port: process.env.DB_PORT,
     dialect: 'postgres',
     ssl: true,
-    use_env_variable: true,
+    use_env_variable: 'postgres://vibnnijo:S_ELoBzS4CTpeMC9sEW6Y3BzlI6EVsWV@ruby.db.elephantsql.com:5432/vibnnijo',
     dialectOptions: {
       ssl: {
         require: true,
