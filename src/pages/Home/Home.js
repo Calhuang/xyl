@@ -49,7 +49,7 @@ function App({ client }) {
     const hide = eval(loadState.hideLoading)
     const loader = document.querySelector('.loader')
     hide(loader)
-  })
+  }, [])
 
   const generateParticleBg = () => {
     const boxes = Array(15).fill('')
