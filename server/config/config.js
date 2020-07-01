@@ -1,5 +1,4 @@
 module.exports = {
-  use_env_variable: true,
   development: {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
@@ -16,6 +15,7 @@ module.exports = {
     port: process.env.DB_PORT,
     dialect: 'postgres',
     ssl: true,
+    use_env_variable: true,
     dialectOptions: {
       ssl: {
         require: true,
