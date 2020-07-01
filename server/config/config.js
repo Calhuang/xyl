@@ -15,5 +15,10 @@ module.exports = {
     port: process.env.DB_PORT,
     dialect: 'postgres',
     ssl: true,
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
   },
 };
