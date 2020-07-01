@@ -45,11 +45,13 @@ function App({ client }) {
   ]
 
   useEffect(() => {
-    const { loadState } = client.readQuery({ query: GET_BODY_LOADING })
-    const hide = eval(loadState.hideLoading)
     const loader = document.querySelector('.loader')
-    hide(loader)
-  }, [])
+    if (loader) {
+      const { loadState } = client.readQuery({ query: GET_BODY_LOADING })
+      const hide = eval(loadState.hideLoading)
+      hide(loader)
+    }
+  }, [loader])
 
   const generateParticleBg = () => {
     const boxes = Array(15).fill('')
