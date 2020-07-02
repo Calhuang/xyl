@@ -48,8 +48,9 @@ function App({ client }) {
     const loader = document.querySelector('.loader')
     if (loader) {
       const { loadState } = client.readQuery({ query: GET_BODY_LOADING })
-      const hide = eval(loadState.hideLoading)
-      hide(loader)
+      if (loadState.bodyLoading) {
+        loader.classList.add('loader--hide')
+      }
     }
   }, [])
 

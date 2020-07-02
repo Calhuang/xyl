@@ -22,17 +22,12 @@ const client = new ApolloClient({
   cache,
 })
 
-const showLoader = (loader) => loader.classList.remove('loader--hide');
-
-const hideLoader = (loader) => loader.classList.add('loader--hide');
-
 // -- store init
 client.writeData({
   data: {
     loadState: {
       __typename: 'LoadState',
-      showLoading: showLoader.toString(),
-      hideLoading: hideLoader.toString(),
+      bodyLoading: true,
     },
   }
 })
