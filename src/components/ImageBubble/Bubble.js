@@ -60,19 +60,19 @@ function Bubble ({image, index, overlay=false, onModalOpen, large}) {
             <div>Google Pixel 3XL</div>
             <div>
               <div className="camera-info">
-                <img src={Aperature}/>
+                <img src={Aperature} alt="Aperature"/>
                 <div className="info-text">f/1.8</div>
               </div>
               <div className="camera-info">
-                <img src={ShutterSpeed}/>
+                <img src={ShutterSpeed} alt="ShutterSpeed"/>
                 <div className="info-text">1/7812 sec.</div>
               </div>
               <div className="camera-info">
-                <img src={Iso}/>
+                <img src={Iso} alt="Iso"/>
                 <div className="info-text">ISO-79</div>
               </div>
               <div className="camera-info">
-                <img src={Focal}/>
+                <img src={Focal} alt="Focal"/>
                 <div className="info-text">4mm</div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Home.scss';
 import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import NavBar from 'components/NavBar/NavBar'
 import Plog from 'components/Plog/Plog'
 import CameraWhite from 'images/camera_w.svg'
@@ -21,7 +21,7 @@ import {
 } from "react-router-dom";
 
 function App({ client }) {
-  const theme = useTheme();
+  // const theme = useTheme();
   // const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
   const buttonList = [
     {
@@ -51,7 +51,7 @@ function App({ client }) {
       const hide = eval(loadState.hideLoading)
       hide(loader)
     }
-  }, [loader])
+  }, [])
 
   const generateParticleBg = () => {
     const boxes = Array(15).fill('')

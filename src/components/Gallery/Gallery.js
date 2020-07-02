@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Gallery.scss';
 import ImgBubble from 'components/ImageBubble/Bubble'
 import InfiniteScroll from 'react-infinite-scroll-component';

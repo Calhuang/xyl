@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState } from 'react';
 import './Plog.scss';
 import Gallery from 'components/Gallery/Gallery'
 import FullImage from 'components/FullImage/FullImage'

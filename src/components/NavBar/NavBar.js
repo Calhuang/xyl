@@ -55,6 +55,7 @@ class NavBar extends React.Component {
                   <img src={this.isCurrentLink(item) ? item.img_w :item.img_b }
                     onMouseOver={e => this.handleImgOver(e, item)}
                     onMouseOut={e => this.handleImgOut(e, item)}
+                    alt="navbar"
                   />
                 </div>
               </div>

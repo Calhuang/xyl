@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './Editor.scss';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -113,7 +113,7 @@ function Editor() {
               Upload
             </Button> : 
             <div>
-              <img className="uploaded-thumb" src={imageThumb}/>
+              <img className="uploaded-thumb" src={imageThumb} alt="imageThumb"/>
             </div>
           }
           <br/>
