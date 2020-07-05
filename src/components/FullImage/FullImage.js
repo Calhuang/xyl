@@ -6,6 +6,8 @@ import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Image, { Shimmer } from 'react-shimmer'
+import { isMobile } from 'utils'
+import Pop from 'components/Transitions/Pop/Pop'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />;
@@ -36,7 +38,7 @@ function FullImage ({isModal, imageObj, close}) {
     const exifValues = Object.values(exif)
     return exifKeys.map((key, index) => {
       return ((exifWhitelist.includes(key)) && 
-      <div key={'box-' + index}><Box title={key} text={exifValues[index].description}/></div>)
+      <Pop><div key={'box-' + index}><Box title={key} text={exifValues[index].description}/></div></Pop>)
     })
   }
 
@@ -61,23 +63,29 @@ function FullImage ({isModal, imageObj, close}) {
         onClose={handleClose} 
         TransitionComponent={Transition}
       >
-        <div className="close-button">
+        <div className={isMobile() ? 'close-button mobile' : 'close-button'}>
           <IconButton color="inherit" onClick={handleClose} aria-label="close">
-            <CloseIcon />
+            <CloseIcon classes={{
+              root: {
+                color: 'grey',
+              }
+            }}/>
           </IconButton>
         </div>
-        {imageObj && <div className="full-image-container">
-          <div className="full-image">
-            <Image src={optimizedImage(imageObj.image)}
-              fallback={<Shimmer width={800} height={document.documentElement.clientHeight - 40}/>}
-            />
-          </div>
-        </div>}
-        <div className="bottom-info">
-        {imageObj && <div><span className="subtext">shot with a</span> {renderDeviceName()}</div>}
+        <div className="full-image-wrapper">
+          {imageObj && <div className="full-image-container">
+            <div className="full-image">
+              <Image src={optimizedImage(imageObj.image)}
+                fallback={<Shimmer width={800} height={document.documentElement.clientHeight - 40}/>}
+              />
+            </div>
+          </div>}
           <br/>
-          <div className="info-grid">
-            {imageObj ? renderImageDetails() : null}
+          {imageObj && <div><span className="subtext">shot with a</span> {renderDeviceName()}</div>}
+          <div className="bottom-info">
+            <div className="info-grid">
+              {imageObj ? renderImageDetails() : null}
+            </div>
           </div>
         </div>
       </Dialog>

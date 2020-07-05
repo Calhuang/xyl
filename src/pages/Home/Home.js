@@ -54,17 +54,11 @@ function App({ client }) {
     }
   }, [])
 
-  const generateParticleBg = () => {
-    const boxes = Array(15).fill('')
-    const sprites = boxes.map((item, index) => <div className="particle" key={'sprite-' + index}></div>)
-    return <div className="particle-container">{sprites}</div>
-  }
-
   return (
     <div className="App">
       <div className="layout">
         <Router>
-          <NavBar buttonList={buttonList}/>
+          {/* <NavBar buttonList={buttonList}/> */}
           <br/>
           <br/>
           <div className="main-content">
@@ -83,7 +77,6 @@ function App({ client }) {
           </div>
         </Router>
       </div>
-      <div>{generateParticleBg()}</div>
     </div>
   );
 }

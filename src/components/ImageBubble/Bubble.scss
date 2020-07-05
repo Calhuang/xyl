@@ -42,7 +42,7 @@
 .bubble {
   width: 250px;
   height: 250px;
-  border: 6px solid $light-grey;
+  border: 6px solid $bubble-outline;
   box-sizing: border-box;
   border-radius: 20px;
   overflow: hidden;
@@ -68,7 +68,7 @@
 .portrait-bubble {
   width: 250px;
   height: 250px;
-  border: 6px solid $light-grey;
+  border: 6px solid $bubble-outline;
   box-sizing: border-box;
   border-radius: 20px;
   overflow: hidden;

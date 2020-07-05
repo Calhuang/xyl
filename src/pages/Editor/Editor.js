@@ -19,12 +19,20 @@ function Editor() {
   const [exif, setExif] = useState(null)
   const [loading, setLoading] = useState(false)
   const inputFileRef = useRef(null);
+  const formRef = useRef(null);
 
   const { register, errors, handleSubmit } = useForm();
 
   // -- graphql CALLBACKS
   const afterCreate = () => {
     setLoading(false)
+    // clear data
+    formRef.current.reset()
+    setTitle('Untitled')
+    setExif(null)
+    setDesc('N/A')
+    setImage(null)
+    setImageThumb(null)
   }
 
   // -- graphql MUTATIONS
@@ -93,7 +101,10 @@ function Editor() {
 
   return (
     <div className="editor shadow-2">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        ref={formRef}
+      >
         <div className="editor-form">
           <input
             accept="image/*"

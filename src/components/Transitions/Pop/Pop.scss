@@ -1,0 +1,12 @@
+.pop-section {
+  transform: scale(0);
+  visibility: hidden;
+  transition: transform 300ms ease,
+    visibility 1000ms ease-out;
+  will-change: opacity, transform, visibility;
+}
+
+.pop-section.is-visible {
+  transform: scale(1);
+  visibility: visible;
+}
