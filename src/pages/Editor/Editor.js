@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Editor.scss';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -98,6 +98,15 @@ function Editor() {
     e.preventDefault()
     inputFileRef.current.click()
   }
+
+  useEffect(() => {
+    const loader = document.querySelector('.loader')
+    if (loader) {
+      if (true) {
+        loader.classList.add('loader--hide')
+      }
+    }
+  }, [])
 
   return (
     <div className="editor shadow-2">

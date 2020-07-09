@@ -3,4 +3,76 @@
 .plog-container {
   z-index: 2;
   position: relative;
+
+  .full-banner {
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .bg-pic {
+      object-fit: contain;
+      filter: brightness(0.60);
+
+      &.landscape {
+        width: 100%;
+      }
+
+      &.portrait {
+        height: 100%;
+      }
+    }
+  }
+  
+  .show-more-icon {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 10px;
+    transition: transform 0.5s ease-in-out;
+
+    img {
+      width: 30px;
+      animation: scroll-down 2s ease 1s 3 alternate;
+    }
+
+    &:hover {
+      transform: translate(-50%, -30%);
+    }
+  }
+
+  .banner-title {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    padding: 0 10px;
+    transition: transform 0.5s ease-in-out;
+    color: $white;
+    border: 2px solid white;
+    animation: fade-in 1s ease-in;
+    padding: 5px 15px;
+
+    .name {
+      font-size: 4vw;
+      font-family: 'Unica One';
+      animation: fade-in 1s ease-in;
+    }
+  }
+}
+
+@keyframes scroll-down {
+  0% {transform: translateY(0px)}
+  25% {transform: translateY(15px)}
+  50% {transform: translateY(8px)}
+  75% {transform: translateY(15px)}
+  100% {transform: translateY(0px)}
+}
+
+@keyframes fade-in {
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
 }

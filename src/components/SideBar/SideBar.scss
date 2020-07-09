@@ -1,0 +1,78 @@
+@import '~styles/base.scss';
+
+$side-width-neg: -30px;
+$side-width-pos: 30px;
+
+.side-bar {
+  position: fixed;
+  width: auto;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in;
+  height: 100vh;
+  display: flex;
+  cursor: pointer;
+  z-index: 3;
+  color: $text-light;
+
+  .side-text {
+    margin-top: 30px;
+    font-size: 2rem;
+
+    &.light {
+      color: black;
+    }
+
+    &.dark {
+      color: $text-light
+    }
+  }
+
+  &.left {
+    left: $side-width-neg;
+  }
+
+  &.right {
+    right: $side-width-neg;
+  }
+
+  .side-bar-peek {
+    width: $side-width-pos;
+    height: 100%;
+
+    &.left {
+      border-radius: 0 8px 8px 0;
+      background-color: $pallete-1;
+    }
+
+    &.right {
+      border-radius: 8px 0 0 8px;
+      background-color: $pallete-2;
+    }
+  }
+
+  .side-bar-button {
+    position: absolute;
+    top: 45%;
+    text-align: center;
+
+    &.left {
+      left: 50%;
+      transform: rotate(-90deg);
+    }
+  
+    &.right {
+      right: 50%;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.side-bar:hover {
+  &.left {
+    transform: translateX($side-width-pos);
+  }
+
+  &.right {
+    transform: translateX($side-width-neg);
+  }
+}

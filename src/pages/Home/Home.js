@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './Home.scss';
 import { useTheme } from '@material-ui/core/styles';
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
-import NavBar from 'components/NavBar/NavBar'
 import Plog from 'components/Plog/Plog'
 import CameraWhite from 'images/camera_w.svg'
 import PortfolioWhite from 'images/portfolio_w.svg'
@@ -11,6 +10,7 @@ import CameraBlack from 'images/camera_b.svg'
 import PortfolioBlack from 'images/portfolio_b.svg'
 import AboutBlack from 'images/about_b.svg'
 import Editor from 'pages/Editor/Editor'
+import SideBar from 'components/SideBar/SideBar'
 import { GET_BODY_LOADING } from 'gql/local/global'
 import { withApollo } from 'react-apollo';
 
@@ -44,23 +44,19 @@ function App({ client }) {
     },
   ]
 
-  useEffect(() => {
-    const loader = document.querySelector('.loader')
-    if (loader) {
-      const { loadState } = client.readQuery({ query: GET_BODY_LOADING })
-      if (loadState.bodyLoading) {
-        loader.classList.add('loader--hide')
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   const loader = document.querySelector('.loader')
+  //   if (loader) {
+  //     if (true) {
+  //       loader.classList.add('loader--hide')
+  //     }
+  //   }
+  // }, [])
 
   return (
     <div className="App">
       <div className="layout">
         <Router>
-          {/* <NavBar buttonList={buttonList}/> */}
-          <br/>
-          <br/>
           <div className="main-content">
             <Switch>
               <Route path="/portfolio">
@@ -71,6 +67,8 @@ function App({ client }) {
                 <Editor/>
               </Route>
               <Route path="/">
+                <SideBar text="Portfolio" isLeftSide/>
+                {/* <SideBar text="Contact"/> */}
                 <Plog/>
               </Route>
             </Switch>

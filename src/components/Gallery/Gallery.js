@@ -8,10 +8,10 @@ import FadeIn from 'components/FadeIn/FadeIn'
 function Gallery ({data, onModalOpen, fetch, noMoreData}) {
   const renderImages = () => {
     let shiftedArray = data.slice()
-    shiftedArray.shift()
+    // shiftedArray.shift()
     return shiftedArray.map((item, index) => {
       return <FadeIn key={'imgbox' + index}>
-        <ImgBubble image={item} index={index + 1} onModalOpen={onModalOpen}/>
+        <ImgBubble image={item} index={index} onModalOpen={onModalOpen}/>
       </FadeIn>
     })
   }
@@ -31,14 +31,14 @@ function Gallery ({data, onModalOpen, fetch, noMoreData}) {
 
   return (
     <div className="gallery">
-      <div 
+      {/* <div 
         className="chip-new-banner animate__animated animate__pulse animate__repeat-3"
       >New!</div>
       {data[0] && <div className={portraitStyle()}>
         <ImgBubble image={applyChip(data[0])} large index={0} key={0} onModalOpen={onModalOpen}/>
-      </div>}
+      </div>} */}
       <InfiniteScroll
-        dataLength={data.length - 1} //This is important field to render the next data
+        dataLength={data.length} //This is important field to render the next data
         next={() => fetch(Math.ceil((data.length + 10) / 10))}
         hasMore={!noMoreData}
         loader={

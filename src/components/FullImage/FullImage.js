@@ -65,11 +65,7 @@ function FullImage ({isModal, imageObj, close}) {
       >
         <div className={isMobile() ? 'close-button mobile' : 'close-button'}>
           <IconButton color="inherit" onClick={handleClose} aria-label="close">
-            <CloseIcon classes={{
-              root: {
-                color: 'grey',
-              }
-            }}/>
+            <CloseIcon/>
           </IconButton>
         </div>
         <div className="full-image-wrapper">

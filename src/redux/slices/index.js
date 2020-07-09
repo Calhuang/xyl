@@ -1,31 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export const initialState = {
-  pageLoading: false,
+  drawer: {
+    left: false,
+    right: false
+  },
+  loading: true,
 }
 
 const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    showLoader: state => {
-      state.pageLoading = true
-      const loader = document.querySelector('.loader')
-      loader.classList.remove('loader--hide')
+    toggleDrawer: (state, { payload }) => {
+      state.drawer = {...state.drawer, [payload.anchor]: payload.open}
     },
-    hideLoader: state => {
-      state.pageLoading = false
-      const loader = document.querySelector('.loader')
-      loader.classList.add('loader--hide')
+    toggleLoading: (state, { payload }) => {
+      state.loading = payload
     },
   },
 })
 
 // export action creators
-export const { showLoader, hideLoader } = globalSlice.actions
+export const { toggleDrawer, toggleLoading } = globalSlice.actions
 
 // A selector
 export const globalSelector = state => state
+export const drawerSelector = state => state.drawer
 
 // The reducer
 export default globalSlice.reducer

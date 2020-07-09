@@ -1,5 +1,9 @@
 @import '~styles/base.scss';
 
+$bubble-border: 4px solid $bubble-outline;
+$bubble-border-hover: 4px solid $pallete-1-t;
+$bubble-border-radius: 10px;
+
 .bubble-container {
   position: relative;
   cursor: pointer;
@@ -42,16 +46,16 @@
 .bubble {
   width: 250px;
   height: 250px;
-  border: 6px solid $bubble-outline;
+  border: $bubble-border;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: $bubble-border-radius;
   overflow: hidden;
   position: relative;
   z-index: 2;
   transition: border 0.2s ease-in;
 
   &:hover {
-    border: 6px solid $pallete-1-t;
+    border: $bubble-border-hover;
   }
   
   img {
@@ -68,16 +72,16 @@
 .portrait-bubble {
   width: 250px;
   height: 250px;
-  border: 6px solid $bubble-outline;
+  border: $bubble-border;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: $bubble-border-radius;
   overflow: hidden;
   position: relative;
   z-index: 2;
   transition: border 0.2s ease-in;
 
   &:hover {
-    border: 6px solid $pallete-1-t;
+    border: $bubble-border-hover;
   }
   
   img {

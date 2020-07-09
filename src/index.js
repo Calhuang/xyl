@@ -4,6 +4,10 @@ import './index.css';
 import App from 'pages/Home/Home';
 import * as serviceWorker from './serviceWorker';
 
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import rootReducer from 'redux/slices'
+
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { HttpLink } from 'apollo-link-http'
@@ -22,20 +26,17 @@ const client = new ApolloClient({
   cache,
 })
 
-// -- store init
-client.writeData({
-  data: {
-    loadState: {
-      __typename: 'LoadState',
-      bodyLoading: true,
-    },
-  }
-})
+// -- redux init
+
+const store = configureStore({ reducer: rootReducer, devTools: true})
+
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App/>
-  </ApolloProvider>, 
+  <Provider store={store}>
+    <ApolloProvider client={client}>
+      <App/>
+    </ApolloProvider>
+  </Provider>, 
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

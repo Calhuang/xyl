@@ -2,13 +2,33 @@ import React, { useState } from 'react';
 import './Plog.scss';
 import Gallery from 'components/Gallery/Gallery'
 import FullImage from 'components/FullImage/FullImage'
+import Drawer from '@material-ui/core/Drawer';
+import Portfolio from 'components/Portfolio/Portfolio'
+import ScrollDownIcon from 'images/scrolldown.svg'
+import { withStyles } from '@material-ui/styles';
+import { isPortrait } from 'utils'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleDrawer, drawerSelector, toggleLoading } from 'redux/slices'
+
 import { useQuery } from '@apollo/react-hooks'
 import { GET_ALL_POSTS } from 'gql/post'
 
-function Plog () {
+const styles = {
+  drawerPaper: {
+    width: '360px',
+    backgroundColor: 'transparent',
+    direction: 'rtl',
+    boxShadow: 'none',
+  },
+};
+
+function Plog ({ classes }) {
   const [isModal, setIsModal] = useState(false)
   const [imageIndex, setImageIndex] = useState(0)
   const [hasNoMore, setHasNoMore] = useState(false)
+  const { left, right } = useSelector(drawerSelector)
+  const dispatch = useDispatch()
   
   // graphql QUERY
   const { loading, error, data, fetchMore } = useQuery(GET_ALL_POSTS, {
@@ -26,6 +46,10 @@ function Plog () {
 
   const handleModalClose = () => {
     setIsModal(false)
+  }
+
+  const handleDrawerClose = (anchor) => {
+    dispatch(toggleDrawer({ anchor, open: false }))
   }
   
   const getMoreData = (offsetPage) => {
@@ -50,16 +74,52 @@ function Plog () {
     });
   }
 
+  const optimizedImage = (imageURL) => {
+    return imageURL.replace('upload', `upload/w_auto:100:1920,q_auto:best,dpr_auto`)
+  }
+
+  const handleImageLoaded = () => {
+    dispatch(toggleLoading(false))
+    const loader = document.querySelector('.loader')
+    if (loader) {
+      loader.classList.add('loader--hide')
+    }
+  }
+
   return (
     <div className="plog-container">
+      <div className="full-banner">
+        <img className={isPortrait() ? "bg-pic portrait" : "bg-pic landscape"}src={data && optimizedImage(data.allPosts[0].image)} onLoad={handleImageLoaded}/>
+        <div className="show-more-icon"><img src={ScrollDownIcon} alt="scroll"/></div>
+        <div className="banner-title">
+          <div className="name">Calvin</div>
+          <div className="name">Huang</div>
+        </div>
+      </div>
+      <Drawer
+        anchor="left"
+        open={left}
+        onClose={() => handleDrawerClose('left')}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+      >
+        <Portfolio/>
+      </Drawer>
+      <Drawer anchor="right" open={right} onClose={() => handleDrawerClose('right')}>
+        <div>hiu2</div>
+      </Drawer>
       <FullImage 
         isModal={isModal}
         imageObj={data ? data.allPosts[imageIndex] : null}
         close={handleModalClose}
       />
+      <br/>
+      <br/>
+      <br/>
       <Gallery data={data ? data.allPosts : []} fetch={getMoreData} noMoreData={hasNoMore} onModalOpen={handleModalOpen}/>
     </div>
   )
 }
 
-export default Plog;
+export default withStyles(styles)(Plog);
