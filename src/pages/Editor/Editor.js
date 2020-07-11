@@ -11,7 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const axios = require('axios')
 
-function Editor() {
+function Editor({auth}) {
   const [image, setImage] = useState(null)
   const [imageThumb, setImageThumb] = useState(null)
   const [title, setTitle] = useState('Untitled')
@@ -35,9 +35,16 @@ function Editor() {
     setImageThumb(null)
   }
 
+  
+  const handleQError = (err) => {
+    alert(err)
+    setLoading(false)
+  }
+
   // -- graphql MUTATIONS
   const [createPost] = useMutation(CREATE_POST, {
     onCompleted: afterCreate,
+    onError: handleQError,
   })
 
   const onSubmit = async (data) => {
@@ -55,6 +62,10 @@ function Editor() {
       formData.append('api_key', process.env.REACT_APP_CLOUDINARY_KEY)
       formData.append('timestamp', (Date.now() / 1000) | 0)
       const uploaded = await axios.post(url, formData)
+      if (uploaded.error) {
+        alert('uploaded.error')
+        return 0
+      }
       // upload to server
       createPost({
         variables: {

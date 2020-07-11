@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import { useTheme } from '@material-ui/core/styles';
 // import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -13,6 +13,7 @@ import Editor from 'pages/Editor/Editor'
 import SideBar from 'components/SideBar/SideBar'
 import { GET_BODY_LOADING } from 'gql/local/global'
 import { withApollo } from 'react-apollo';
+import { authCheck } from 'utils'
 
 import {
   BrowserRouter as Router,
@@ -44,14 +45,15 @@ function App({ client }) {
     },
   ]
 
-  // useEffect(() => {
-  //   const loader = document.querySelector('.loader')
-  //   if (loader) {
-  //     if (true) {
-  //       loader.classList.add('loader--hide')
-  //     }
-  //   }
-  // }, [])
+  const [auth, setAuth] = useState(false)
+
+  useEffect(() => {
+    const init = async () => {
+      const res = await authCheck()
+      setAuth(res)
+    }
+    init()
+  }, [])
 
   return (
     <div className="App">
@@ -64,11 +66,11 @@ function App({ client }) {
               <Route path="/about">
               </Route>
               <Route path="/edit">
-                <Editor/>
+                { auth ? <Editor auth={auth}/> : null}
               </Route>
               <Route path="/">
                 <SideBar text="Portfolio" isLeftSide/>
-                {/* <SideBar text="Contact"/> */}
+                <SideBar text="Contact"/>
                 <Plog/>
               </Route>
             </Switch>
