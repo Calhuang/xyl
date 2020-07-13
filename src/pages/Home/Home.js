@@ -70,7 +70,7 @@ function App({ client }) {
               </Route>
               <Route path="/">
                 <SideBar text="Portfolio" isLeftSide/>
-                <SideBar text="Contact"/>
+                {/* <SideBar text="Contact"/> */}
                 <Plog/>
               </Route>
             </Switch>
