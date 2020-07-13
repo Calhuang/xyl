@@ -22,7 +22,7 @@ const app = express();
 server.applyMiddleware({ app });
 
 // CORS
-const whitelist = ['http://localhost:3000', 'https://www.calverino.com/']
+const whitelist = ['http://localhost:3000', 'https://www.calverino.com']
 
 const corsOptions = function(origin, callback) {
   // allow requests with no origin 
