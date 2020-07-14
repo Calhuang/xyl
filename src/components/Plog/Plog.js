@@ -4,6 +4,7 @@ import Gallery from 'components/Gallery/Gallery'
 import FullImage from 'components/FullImage/FullImage'
 import Drawer from '@material-ui/core/Drawer';
 import Portfolio from 'components/Portfolio/Portfolio'
+import Contact from 'components/Contact/Contact'
 import ScrollDownIcon from 'images/scrolldown.svg'
 import { withStyles } from '@material-ui/styles';
 import { isPortrait } from 'utils'
@@ -86,11 +87,16 @@ function Plog ({ classes }) {
     }
   }
 
+  const scrollHeight = () => {
+    let pageHeight = window.innerHeight;
+    window.scrollTo({top: pageHeight, behavior: 'smooth'})
+  }
+
   return (
     <div className="plog-container">
       <div className="full-banner">
         <img className={isPortrait() ? "bg-pic portrait" : "bg-pic landscape"}src={data && optimizedImage(data.allPosts[0].image)} onLoad={handleImageLoaded}/>
-        <div className="show-more-icon"><img src={ScrollDownIcon} alt="scroll"/></div>
+        <div className="show-more-icon" onClick={scrollHeight}><img src={ScrollDownIcon} alt="scroll"/></div>
         <div className="banner-title">
           <div className="name">Calvin</div>
           <div className="name">Huang</div>
@@ -107,7 +113,7 @@ function Plog ({ classes }) {
         <Portfolio/>
       </Drawer>
       <Drawer anchor="right" open={right} onClose={() => handleDrawerClose('right')}>
-        <div>hiu2</div>
+        <Contact/>
       </Drawer>
       <FullImage 
         isModal={isModal}

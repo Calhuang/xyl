@@ -36,6 +36,10 @@ const corsOptions = function(origin, callback) {
   return callback(null, true);
 }
 
+app.options('*', cors({
+  origin: corsOptions,
+}))
+
 app.use(cors({
   origin: corsOptions,
 }))

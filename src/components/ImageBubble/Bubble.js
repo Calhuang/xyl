@@ -19,10 +19,12 @@ function Bubble ({image, index, overlay=false, onModalOpen, large}) {
       return 'bubble featured'
     }
     // -- portrait detection
-    const exif = JSON.parse(image.exif)
-    if (exif['Orientation'].value === 6) {
-      // portrait
-      return 'portrait-bubble'
+    if (image.exif) {
+      const exif = JSON.parse(image.exif)
+      if (exif['Orientation'] && (exif['Orientation'].value === 6)) {
+        // portrait
+        return 'portrait-bubble'
+      }
     }
     return 'bubble'
   }
