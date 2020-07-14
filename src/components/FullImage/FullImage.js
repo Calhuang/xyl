@@ -38,7 +38,7 @@ function FullImage ({isModal, imageObj, close}) {
     const exifValues = Object.values(exif)
     return exifKeys.map((key, index) => {
       return ((exifWhitelist.includes(key)) && 
-      <Pop><div key={'box-' + index}><Box title={key} text={exifValues[index].description}/></div></Pop>)
+      <Pop key={'box-' + index}><div><Box title={key} text={exifValues[index].description}/></div></Pop>)
     })
   }
 
