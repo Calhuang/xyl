@@ -6,7 +6,7 @@
   height: 100%;
   background-color: #fff;
   transition: opacity 0.5s ease-in-out, z-index 0.8s ease-in-out;
-  z-index: 2;
+  z-index: 20;
 }
 
 .loader--hide {
@@ -40,6 +40,17 @@
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+
+.loader-text {
+  color: #222;
+  font-size: 16px;
+  border-radius: 50%;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @-webkit-keyframes load4 {
   0%,
   100% {

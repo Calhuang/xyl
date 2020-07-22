@@ -7,7 +7,6 @@ import { useDrag } from 'react-use-gesture'
 
 function SideBar ({ text, isLeftSide }) {
   const dispatch = useDispatch()
-  const [position, setPosition] = useState(0)
 
   const handleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

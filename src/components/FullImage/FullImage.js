@@ -52,7 +52,7 @@ function FullImage ({isModal, imageObj, close}) {
 
   const optimizedImage = (imageURL) => {
     const width = document.documentElement.clientWidth
-    const roundNear100 = Math.ceil(width / 100) * 100
+    const roundNear100 = Math.ceil(width / 100) * 200
     return imageURL.replace('upload', `upload/w_${roundNear100},dpr_auto`)
   }
 

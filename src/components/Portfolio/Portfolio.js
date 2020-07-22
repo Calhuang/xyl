@@ -87,7 +87,7 @@ function Portfolio () {
   })
   
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-container"  {...drag()}>
       <div className="header-bar">
         <IconButton color="secondary" onClick={handleClose} aria-label="close">
           <CloseIcon fontSize="large"/>
@@ -95,7 +95,7 @@ function Portfolio () {
       </div>
       <div className="flag-container">
         {/* <div className="pole"></div> */}
-        <div {...drag()} className="card-grid">
+        <div className="card-grid">
           {renderProfessionalCards()}
           {renderProjectCards()}
         </div>
