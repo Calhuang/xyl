@@ -3,6 +3,7 @@ import './Portfolio.scss';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/FirstPage';
 import PortfolioCard from 'components/Portfolio/PortfolioCard/PortfolioCard';
+import { useDrag } from 'react-use-gesture'
 
 import { useDispatch } from 'react-redux'
 import { toggleDrawer } from 'redux/slices'
@@ -75,6 +76,15 @@ function Portfolio () {
   const renderProfessionalCards = () => {
     return professional.map(proj => <PortfolioCard {...proj}/>)
   }
+
+  const drag = useDrag(({ swipe: [swipeX] }) => {
+    // position will either be -1, 0 or 1
+    const open = false
+    let anchor = 'left'
+    if (swipeX === -1) {
+      dispatch(toggleDrawer({anchor, open}))
+    }
+  })
   
   return (
     <div className="portfolio-container">
@@ -85,7 +95,7 @@ function Portfolio () {
       </div>
       <div className="flag-container">
         {/* <div className="pole"></div> */}
-        <div className="card-grid">
+        <div {...drag()} className="card-grid">
           {renderProfessionalCards()}
           {renderProjectCards()}
         </div>

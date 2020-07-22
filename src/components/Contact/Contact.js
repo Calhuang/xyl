@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/LastPage';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import { useDrag } from 'react-use-gesture'
 
 import { useDispatch } from 'react-redux'
 import { toggleDrawer } from 'redux/slices'
@@ -21,9 +22,18 @@ function Contact () {
       { name: 'Github', icon: <LinkedInIcon/>, url: 'https://www.github.com/Calhuang' }]
     return social.map(item => <div className="social" onClick={() => window.open(item.url, '_target')}>{item.icon}&nbsp;{item.name}</div>)
   }
+
+  const drag = useDrag(({ swipe: [swipeX] }) => {
+    // position will either be -1, 0 or 1
+    const open = false
+    let anchor = 'right'
+    if (swipeX === 1) {
+      dispatch(toggleDrawer({anchor, open}))
+    }
+  })
   
   return (
-    <div className="contact-container">
+    <div className="contact-container" {...drag()}>
       <div className="header-bar">
         <IconButton color="primary" onClick={handleClose} aria-label="close">
           <CloseIcon fontSize="large"/>

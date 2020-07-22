@@ -12,7 +12,6 @@ $side-width-pos: 30px;
   display: flex;
   cursor: pointer;
   z-index: 3;
-  color: $text-light;
 
   .side-text {
     margin-top: 30px;
@@ -23,16 +22,18 @@ $side-width-pos: 30px;
     }
 
     &.dark {
-      color: $text-light
+      color: $text-light;
     }
   }
 
   &.left {
     left: $side-width-neg;
+    color: $pallete-1
   }
 
   &.right {
     right: $side-width-neg;
+    color: $pallete-2
   }
 
   .side-bar-peek {

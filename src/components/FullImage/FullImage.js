@@ -47,12 +47,13 @@ function FullImage ({isModal, imageObj, close}) {
     if (exif.Make && exif.Model) {
       return `${exif.Make.description} ${exif.Model.description}`
     }
-    return 'Unkown Device'
+    return 'Unknown Device'
   }
 
   const optimizedImage = (imageURL) => {
     const width = document.documentElement.clientWidth
-    return imageURL.replace('upload', `upload/w_${width},dpr_auto`)
+    const roundNear100 = Math.ceil(width / 100) * 100
+    return imageURL.replace('upload', `upload/w_${roundNear100},dpr_auto`)
   }
 
   return (
