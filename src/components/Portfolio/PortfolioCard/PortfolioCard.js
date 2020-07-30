@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import './PortfolioCard.scss';
 import Divider from '@material-ui/core/Divider';
 import GithubIcon from 'images/Octicons-mark-github.svg'
+import DocIcon from 'images/description_48px.svg'
+import BusinessIcon from 'images/business_center-24px.svg'
 import Chip from '@material-ui/core/Chip';
 
 function PortfolioCard ({ title, description, tags, url, type }) {
   const renderChips = () => {
-  return tags.map(tag => {
+  return tags.map((tag, index) => {
     let chipStyle
     switch (tag) {
       case 'vue':
@@ -82,7 +84,7 @@ function PortfolioCard ({ title, description, tags, url, type }) {
         }
         break                  
       }
-      return <Chip label={tag} size="small" style={{...chipStyle, marginRight: "4px"}} clickable/>
+      return <Chip key={'portfolio-card-' + index} label={tag} size="small" style={{...chipStyle, marginRight: "4px"}} clickable/>
     })
   }
 
@@ -114,6 +116,19 @@ function PortfolioCard ({ title, description, tags, url, type }) {
     }
   }
 
+  const bgIcon = () => {
+    switch(type) {
+      case 'resume':
+        return DocIcon
+      case 'doubledoor':
+        return BusinessIcon
+      case 'launchmaps':
+        return BusinessIcon
+      default:
+        return GithubIcon
+    }
+  }
+
   return (
     <div
       className="portfolio-card-container shadow-2"
@@ -128,7 +143,7 @@ function PortfolioCard ({ title, description, tags, url, type }) {
         <Divider/>
         <div className="description">{description}</div>
       </div>
-      <img src={GithubIcon}/>
+      <img src={bgIcon()} alt=""/>
     </div>
   )
 }
