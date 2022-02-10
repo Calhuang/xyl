@@ -17,7 +17,7 @@
     "exifreader": "^3.12.0",
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.0",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.0",
